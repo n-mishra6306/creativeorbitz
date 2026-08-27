@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Our Process · Creative Orbitz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f5f3ef;
+      color: #111;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .process-container {
+      max-width: 1300px;
+      width: 100%;
+      background: #fff;
+      border-radius: 48px;
+      padding: 60px 50px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+    }
+    .section-heading {
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .section-heading .light {
+      font-weight: 300;
+      color: #333;
+    }
+    .process-sub {
+      font-size: 1.2rem;
+      color: #2b2b2b;
+      margin-bottom: 48px;
+      max-width: 600px;
+      font-weight: 400;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px 24px;
+    }
+    .step {
+      background: #f5f3ef;
+      padding: 32px 24px 28px;
+      border-radius: 28px;
+      transition: all 0.25s ease;
+      border-left: 4px solid #2a2a8a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .step:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.04);
+      background: #ffffff;
+    }
+    .step .step-num {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #2a2a8a;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .step h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .step p {
+      color: #2b2b2b;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .step .icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .process-container { padding: 32px 20px; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+    /* subtle accent line */
+    .accent-line {
+      width: 60px;
+      height: 4px;
+      background: #2a2a8a;
+      border-radius: 4px;
+      margin: 8px 0 20px 0;
+    }
+    /* dummy nav / back link (cosmetic) */
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      font-weight: 600;
+      color: #0b0b0b;
+      text-decoration: none;
+      border-bottom: 2px solid #0b0b0b;
+      padding-bottom: 2px;
+    }
+    .back-link:hover { color: #2a2a8a; border-color: #2a2a8a; }
+  </style>
+</head>
+<body>
+
+<div class="process-container">
+  <!-- heading -->
+  <h2 class="section-heading">FROM IDEA <br><span class="light">TO IMPACT.</span></h2>
+  <div class="accent-line"></div>
+  <p class="process-sub">We follow a proven, human‑centred process that turns strategy into creative work that actually moves the needle.</p>
+
+  <!-- steps grid -->
+  <div class="process-steps">
+    <div class="step">
+      <span class="icon">🔍</span>
+      <div class="step-num">01</div>
+      <h3>DISCOVER</h3>
+      <p>We dive deep into your brand, audience, and market to uncover real opportunities.</p>
+    </div>
+    <div class="step">
+      <span class="icon">🧠</span>
+      <div class="step-num">02</div>
+      <h3>STRATEGIZE</h3>
+      <p>A clear, data‑backed roadmap that aligns your goals with creative execution.</p>
+    </div>
+    <div class="step">
+      <span class="icon">🎨</span>
+      <div class="step-num">03</div>
+      <h3>CREATE</h3>
+      <p>High‑impact content, visuals, and messaging that stop the scroll.</p>
+    </div>
+    <div class="step">
+      <span class="icon">📡</span>
+      <div class="step-num">04</div>
+      <h3>DISTRIBUTE</h3>
+      <p>We put your story in front of the right people, on the right channels.</p>
+    </div>
+    <div class="step">
+      <span class="icon">📈</span>
+      <div class="step-num">05</div>
+      <h3>OPTIMIZE</h3>
+      <p>Continuous testing, learning, and refining to maximise performance.</p>
+    </div>
+  </div>
+
+  <!-- optional back link (just for demo) -->
+  <a href="index.html.html" class="back-link">← back to all sections</a>
+</div>
+
+</body>
+</html>
