@@ -903,7 +903,7 @@
   <div class="popup-overlay" id="collabPopup">
     <div class="popup-card">
       <video controls autoplay muted playsinline>
-        <source src="Timeline 1 copylast.mp4" type="video/mp4">
+        <source src="./Timeline 1 copylast.mp4" type="video/mp4">
       </video>
       <h3>✨ Our recent collaboration</h3>
       <p>We teamed up with a foreign female creator — creative magic happened. Watch the full story.</p>
@@ -971,7 +971,7 @@
       <li><a href="#work">Work</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="pro.html">Process</a></li>
-      <!--<li><a href="contact.html">Contact</a></li>-->
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="#" class="nav-cta" id="navProjectBtn">Start a Project →</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="menu">
@@ -1009,7 +1009,7 @@
       <div class="work-card">
         <div class="img-wrap">
           <video autoplay muted loop playsinline>
-            <source src="testimonial1.mp4" type="video/mp4">
+            <source src="./testimonial1.mp4" type="video/mp4">
           </video>
         </div>
         <div class="info">
@@ -1023,7 +1023,7 @@
       <div class="work-card">
         <div class="img-wrap">
           <video autoplay muted loop playsinline>
-            <source src="testimonial3.mp4" type="video/mp4">
+            <source src="./testimonial3.mp4" type="video/mp4">
           </video>
         </div>
         <div class="info">
@@ -1037,7 +1037,7 @@
       <div class="work-card">
         <div class="img-wrap">
           <video autoplay muted loop playsinline>
-            <source src="test1.mp4" type="video/mp4">
+            <source src="./test1.mp4" type="video/mp4">
           </video>
         </div>
         <div class="info">
@@ -1056,7 +1056,7 @@
     
     <div class="stack-carousel" id="stackCarousel">
       <!-- Card 1 -->
-      <div class="stack-card" data-video="scroll1.mp4" data-title="Client: Orbitz" data-meta="Social · 2.4M views" data-duration="0:32">
+      <div class="stack-card" data-video="./scroll1.mp4" data-title="Client: Orbitz" data-meta="Social · 2.4M views" data-duration="0:32">
         <div class="card-index">1 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
@@ -1070,7 +1070,7 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="stack-card" data-video="scroll2.mp4" data-title="Brand: LUMINA" data-meta="Branding · 1.8M" data-duration="0:45">
+      <div class="stack-card" data-video="./scroll2.mp4" data-title="Brand: LUMINA" data-meta="Branding · 1.8M" data-duration="0:45">
         <div class="card-index">2 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
@@ -1084,7 +1084,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="stack-card" data-video="scroll3.mp4" data-title="#REELS Campaign" data-meta="Content · 3.1M" data-duration="0:28">
+      <div class="stack-card" data-video="./scroll3.mp4" data-title="#REELS Campaign" data-meta="Content · 3.1M" data-duration="0:28">
         <div class="card-index">3 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
@@ -1098,7 +1098,7 @@
       </div>
 
       <!-- Card 4 -->
-      <div class="stack-card" data-video="scroll4.mp4" data-title="Meta Ads" data-meta="Performance · 5.6M" data-duration="0:38">
+      <div class="stack-card" data-video="./scroll4.mp4" data-title="Meta Ads" data-meta="Performance · 5.6M" data-duration="0:38">
         <div class="card-index">4 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
@@ -1112,7 +1112,7 @@
       </div>
 
       <!-- Card 5 -->
-      <div class="stack-card" data-video="scroll5.mp4" data-title="UGC Campaign" data-meta="Influencer · 4.2M" data-duration="0:52">
+      <div class="stack-card" data-video="./scroll5.mp4" data-title="UGC Campaign" data-meta="Influencer · 4.2M" data-duration="0:52">
         <div class="card-index">5 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
@@ -1126,7 +1126,7 @@
       </div>
 
       <!-- Card 6 -->
-      <div class="stack-card" data-video="scroll6.mp4" data-title="Brand Launch" data-meta="Branding · 1.2M" data-duration="0:41">
+      <div class="stack-card" data-video="./scroll6.mp4" data-title="Brand Launch" data-meta="Branding · 1.2M" data-duration="0:41">
         <div class="card-index">6 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
@@ -1344,6 +1344,13 @@
         durationBadge.textContent = card.dataset.duration;
       }
 
+      // GitHub Pages-safe video URL.
+      // All video files are expected to be in the same folder as index.html.
+      const getVideoUrl = () => {
+        const src = card.dataset.video;
+        return src ? new URL(src, document.baseURI).href : '';
+      };
+
       // Auto-play the video when card becomes active
       const observer = new MutationObserver(() => {
         if (card.classList.contains('active') && video.src) {
@@ -1355,9 +1362,10 @@
       // Load video when card becomes active
       const loadObserver = new MutationObserver(() => {
         if (card.classList.contains('active') && !video.src) {
-          const src = card.dataset.video;
+          const src = getVideoUrl();
           if (src) {
             video.src = src;
+            video.preload = 'metadata';
             video.load();
             video.play().catch(() => {});
           }
@@ -1421,6 +1429,14 @@
             btn.classList.add('playing');
             vid.removeEventListener('loadeddata', onLoaded);
           });
+
+          vid.addEventListener('error', function onError() {
+            spinnerEl.classList.remove('active');
+            btn.textContent = '⚠ Video unavailable';
+            btn.classList.remove('playing');
+            console.error('Creative Orbitz video failed to load:', resolvedSrc, vid.error);
+            vid.removeEventListener('error', onError);
+          });
         } else {
           vid.play().catch(() => {});
           btn.textContent = '⏸ Pause';
@@ -1451,6 +1467,18 @@
       video.addEventListener('play', () => {
         playBtn.textContent = '⏸ Pause';
         playBtn.classList.add('playing');
+      });
+    });
+
+    // ===== GITHUB PAGES VIDEO ERROR HANDLING =====
+    // Local MP4 files must be committed to the repository. This logs the exact
+    // URL if GitHub Pages cannot find or decode one of them.
+    document.querySelectorAll('video').forEach(video => {
+      video.addEventListener('error', () => {
+        console.error(
+          'Creative Orbitz: video could not load:',
+          video.currentSrc || video.querySelector('source')?.src || '(no source)'
+        );
       });
     });
 
