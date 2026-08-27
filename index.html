@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Creative Orbitz — Creative & Digital Marketing Agency</title>
-  <!-- Meta SEO -->
   <meta name="description" content="Creative Orbitz helps ambitious brands grow through creative strategy, content, social media, branding and performance marketing.">
   <meta property="og:title" content="Creative Orbitz — Creative & Digital Marketing Agency">
   <meta property="og:description" content="Creative Orbitz helps ambitious brands grow through creative strategy, content, social media, branding and performance marketing.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#f5f3ef">
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
@@ -44,6 +42,7 @@
     .btn-outline { background: transparent; color: #0b0b0b; border: 1px solid #0b0b0b; }
     .btn-outline:hover { background: #0b0b0b; color: #f5f3ef; }
     .btn:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+    
     /* NAV */
     nav {
       position: fixed;
@@ -179,6 +178,7 @@
       .logo-text .top { font-size: 1rem; }
       .logo-text .bottom { font-size: 0.55rem; }
     }
+    
     /* HERO */
     .hero {
       min-height: 100vh;
@@ -257,6 +257,7 @@
       .hero { padding: 100px 20px 40px; }
       .hero h1 { font-size: clamp(2.8rem, 15vw, 4rem); }
     }
+    
     /* MARQUEE */
     .marquee {
       background: #0b0b0b;
@@ -284,39 +285,34 @@
       letter-spacing: -0.03em;
     }
     .section-heading .light { font-weight: 300; color: #333; }
-    /* FEATURED WORK */
+    
+    /* FEATURED WORK - AUTOPLAY CARDS */
     .featured-work {
       padding: 80px 40px;
       background: #f5f3ef;
     }
     .work-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
       max-width: 1300px;
       margin: 0 auto;
     }
     .work-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
       background: #fff;
       border-radius: 24px;
       overflow: hidden;
       box-shadow: 0 12px 40px rgba(0,0,0,0.02);
       transition: all 0.3s;
-      padding: 20px;
     }
     .work-card:hover {
       box-shadow: 0 24px 60px rgba(0,0,0,0.06);
-      transform: translateY(-4px);
+      transform: translateY(-6px);
     }
     .work-card .img-wrap {
       width: 100%;
       aspect-ratio: 4/3;
       background: #eae7e0;
-      border-radius: 16px;
       overflow: hidden;
       position: relative;
     }
@@ -326,41 +322,42 @@
       object-fit: cover;
       display: block;
     }
-    .work-card .img-wrap .play-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2rem;
-      font-weight: 600;
-      backdrop-filter: blur(2px);
-      opacity: 0;
-      transition: 0.3s;
-      cursor: pointer;
+    .work-card .info {
+      padding: 24px 28px 28px;
     }
-    .work-card .img-wrap:hover .play-overlay { opacity: 1; }
-    .work-card .info h3 { font-size: 2rem; font-weight: 700; }
     .work-card .info .tag {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: #2a2a8a;
       margin-bottom: 4px;
     }
-    .work-card .info p { margin: 12px 0 16px; color: #2b2b2b; line-height: 1.5; }
+    .work-card .info h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .work-card .info p {
+      color: #2b2b2b;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
     .work-card .info a {
       font-weight: 600;
       color: #0b0b0b;
       text-decoration: none;
       border-bottom: 2px solid #0b0b0b;
       padding-bottom: 2px;
+      transition: 0.2s;
+    }
+    .work-card .info a:hover {
+      color: #2a2a8a;
+      border-color: #2a2a8a;
     }
     @media (max-width: 768px) {
-      .work-card { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr; }
       .featured-work { padding: 60px 20px; }
     }
 
@@ -369,7 +366,6 @@
       padding: 40px 40px 80px;
       background: #f5f3ef;
     }
-
     .stack-carousel {
       max-width: 500px;
       margin: 0 auto;
@@ -377,7 +373,6 @@
       height: 460px;
       perspective: 1000px;
     }
-
     .stack-card {
       position: absolute;
       width: 100%;
@@ -392,7 +387,6 @@
       transform: translateY(60px) scale(0.85) rotateX(10deg);
       pointer-events: none;
     }
-
     .stack-card.active {
       opacity: 1;
       transform: translateY(0) scale(1) rotateX(0deg);
@@ -400,33 +394,28 @@
       z-index: 10;
       box-shadow: 0 12px 50px rgba(0,0,0,0.12);
     }
-
     .stack-card.prev {
       opacity: 0.5;
       transform: translateY(-20px) scale(0.92) rotateX(-5deg);
       pointer-events: none;
       z-index: 5;
     }
-
     .stack-card.next {
       opacity: 0.5;
       transform: translateY(60px) scale(0.88) rotateX(8deg);
       pointer-events: none;
       z-index: 5;
     }
-
     .stack-card.exit-down {
       opacity: 0;
       transform: translateY(120px) scale(0.7) rotateX(15deg);
       pointer-events: none;
     }
-
     .stack-card.exit-up {
       opacity: 0;
       transform: translateY(-120px) scale(0.7) rotateX(-15deg);
       pointer-events: none;
     }
-
     .stack-card .vid-placeholder {
       background: #d9d6ce;
       aspect-ratio: 16/9;
@@ -437,14 +426,12 @@
       position: relative;
       overflow: hidden;
     }
-
     .stack-card .vid-placeholder video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-
     .stack-card .vid-placeholder .play-btn {
       position: absolute;
       background: rgba(0,0,0,0.7);
@@ -462,17 +449,14 @@
       align-items: center;
       gap: 8px;
     }
-
     .stack-card .vid-placeholder .play-btn:hover {
       background: #2a2a8a;
       transform: scale(1.05);
       border-color: #2a2a8a;
     }
-
     .stack-card .vid-placeholder .play-btn.playing {
       background: rgba(42,42,138,0.9);
     }
-
     .stack-card .vid-placeholder .duration-badge {
       position: absolute;
       bottom: 12px;
@@ -486,7 +470,6 @@
       font-weight: 600;
       z-index: 4;
     }
-
     .stack-card .vid-placeholder .mute-indicator {
       position: absolute;
       bottom: 12px;
@@ -502,7 +485,6 @@
       opacity: 0.7;
       cursor: pointer;
     }
-
     .stack-card .vid-placeholder .loading-spinner {
       position: absolute;
       inset: 0;
@@ -515,11 +497,9 @@
       pointer-events: none;
       transition: opacity 0.3s;
     }
-
     .stack-card .vid-placeholder .loading-spinner.active {
       opacity: 1;
     }
-
     .stack-card .vid-placeholder .loading-spinner::after {
       content: '';
       width: 40px;
@@ -529,9 +509,7 @@
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
-
     @keyframes spin { to { transform: rotate(360deg); } }
-
     .stack-card h4 {
       font-size: 1.2rem;
       margin-top: 14px;
@@ -555,7 +533,6 @@
       content: '👁';
       margin-right: 4px;
     }
-
     .stack-card .card-index {
       position: absolute;
       top: 20px;
@@ -569,8 +546,6 @@
       color: #666;
       z-index: 6;
     }
-
-    /* Carousel Controls */
     .carousel-controls {
       display: flex;
       justify-content: center;
@@ -578,7 +553,6 @@
       gap: 20px;
       margin-top: 30px;
     }
-
     .carousel-controls button {
       background: #0b0b0b;
       color: #f5f3ef;
@@ -593,19 +567,16 @@
       align-items: center;
       gap: 8px;
     }
-
     .carousel-controls button:hover {
       background: #2a2a8a;
       transform: scale(1.03);
       box-shadow: 0 8px 30px rgba(42,42,138,0.3);
     }
-
     .carousel-controls button:disabled {
       opacity: 0.3;
       cursor: not-allowed;
       transform: none !important;
     }
-
     .carousel-controls .counter {
       font-weight: 600;
       font-size: 1rem;
@@ -613,25 +584,22 @@
       min-width: 60px;
       text-align: center;
     }
-
     .carousel-controls .dots {
       display: flex;
       gap: 8px;
     }
-
     .carousel-controls .dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: #ccc;
       transition: all 0.3s;
+      cursor: pointer;
     }
-
     .carousel-controls .dot.active {
       background: #2a2a8a;
       transform: scale(1.3);
     }
-
     @media (max-width: 600px) {
       .stack-carousel-wrapper { padding: 20px 16px 60px; }
       .stack-carousel { height: 400px; }
@@ -656,6 +624,7 @@
       color: #0b0b0b;
     }
     .stat-item .label { font-weight: 400; color: #2b2b2b; font-size: 1rem; margin-top: 6px; }
+    
     /* services */
     .services {
       padding: 80px 40px;
@@ -696,6 +665,7 @@
       .service-row { flex-direction: column; align-items: flex-start; gap: 6px; }
       .service-row .s-desc { width: 100%; }
     }
+    
     /* process */
     .process {
       padding: 80px 40px;
@@ -715,6 +685,7 @@
     }
     .step h3 { font-size: 1.6rem; font-weight: 700; }
     .step p { color: #2b2b2b; font-size: 0.95rem; margin-top: 8px; }
+    
     .pillars {
       display: flex;
       gap: 30px;
@@ -734,6 +705,7 @@
     }
     .pillar:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.04); }
     .pillar h3 { font-size: 2rem; font-weight: 700; }
+    
     .cta-section {
       padding: 120px 40px;
       background: #0b0b0b;
@@ -751,6 +723,7 @@
       margin-top: 30px;
     }
     .cta-section .btn:hover { background: #fff; }
+    
     footer {
       background: #0b0b0b;
       color: #b0b0b0;
@@ -777,6 +750,7 @@
       .section-heading { font-size: 2.2rem; }
       .stats-section { grid-template-columns: 1fr 1fr; }
     }
+    
     /* POPUP */
     .popup-overlay {
       position: fixed;
@@ -994,10 +968,10 @@
       </span>
     </a>
     <ul class="nav-links">
-      <!-- <li><a href="#work">Work</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="contact.html">Contact</a></li> -->
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="pro.html">Process</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="#" class="nav-cta" id="navProjectBtn">Start a Project →</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="menu">
@@ -1005,10 +979,10 @@
     </button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <!-- <a href="#work">Work</a>
-    <a href="#">Services</a> 
-    <a href="contact.html">Contact</a>-->
-    <a href="pro.html">Process</a>
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="contact.html">Contact</a>
     <a href="#" class="nav-cta-mobile" id="mobileProjectBtn">Start a Project →</a>
   </div>
 
@@ -1028,36 +1002,50 @@
   <!-- MARQUEE -->
   <div class="marquee"><div class="marquee-track"><span>STRATEGY</span><span>CONTENT</span><span>DESIGN</span><span>SOCIAL MEDIA</span><span>PERFORMANCE</span><span>BRANDING</span><span>VIDEO</span><span>GROWTH</span><span>STRATEGY</span><span>CONTENT</span><span>DESIGN</span><span>SOCIAL MEDIA</span><span>PERFORMANCE</span><span>BRANDING</span><span>VIDEO</span><span>GROWTH</span></div></div>
 
-  <!-- FEATURED WORK (testimonials videos) -->
+  <!-- FEATURED WORK - AUTOPLAY & LOOP -->
   <section class="featured-work" id="work">
     <h2 class="section-heading">WORK THAT SPEAKS <br><span class="light">BEFORE WE DO.</span></h2>
     <div class="work-grid">
       <div class="work-card">
         <div class="img-wrap">
-          <video muted playsinline>
+          <video autoplay muted loop playsinline>
             <source src="testimonial1.mp4" type="video/mp4">
           </video>
-          <div class="play-overlay">▶</div>
         </div>
-        <div class="info"><span class="tag">Testimonial</span><h3>Client: Orbitz</h3><p>Watch how we helped Orbitz scale their social presence.</p><a href="#"></a></div>
+        <div class="info">
+          <span class="tag">Testimonial</span>
+          <h3>Client: Orbitz</h3>
+          <p>Watch how we helped Orbitz scale their social presence with our creative strategy.</p>
+          <a href="#">View Case Study →</a>
+        </div>
       </div>
+
       <div class="work-card">
         <div class="img-wrap">
-          <video muted playsinline>
+          <video autoplay muted loop playsinline>
             <source src="testimonial3.mp4" type="video/mp4">
           </video>
-          <div class="play-overlay">▶</div>
         </div>
-        <div class="info"><span class="tag">Testimonial</span><h3>Brand: LUMINA</h3><p>Brand identity and performance campaign that delivered.</p><a href="#">View Case Study →</a></div>
+        <div class="info">
+          <span class="tag">Testimonial</span>
+          <h3>Brand: LUMINA</h3>
+          <p>Brand identity and performance campaign that delivered exceptional results.</p>
+          <a href="#">View Case Study →</a>
+        </div>
       </div>
+
       <div class="work-card">
         <div class="img-wrap">
-          <video muted playsinline>
+          <video autoplay muted loop playsinline>
             <source src="test1.mp4" type="video/mp4">
           </video>
-          <div class="play-overlay">▶</div>
         </div>
-        <div class="info"><span class="tag">Testimonial</span><h3>#REELS Campaign</h3><p>Content that generated 3.1M views in 30 days.</p><a href="#">View Case Study →</a></div>
+        <div class="info">
+          <span class="tag">Testimonial</span>
+          <h3>#REELS Campaign</h3>
+          <p>Content that generated 3.1M views in 30 days through viral storytelling.</p>
+          <a href="#">View Case Study →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1072,13 +1060,13 @@
         <div class="card-index">1 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
-          <video muted playsinline preload="metadata"></video>
+          <video autoplay muted loop playsinline preload="metadata"></video>
           <button class="play-btn">▶ Play</button>
           <span class="duration-badge">0:32</span>
           <span class="mute-indicator">🔊</span>
         </div>
-        <h4></h4>
-        <div class="meta"> <span class="views"></span></div>
+        <h4>Client: Orbitz</h4>
+        <div class="meta">Social <span class="views">2.4M views</span></div>
       </div>
 
       <!-- Card 2 -->
@@ -1086,13 +1074,13 @@
         <div class="card-index">2 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
-          <video muted playsinline preload="metadata"></video>
+          <video autoplay muted loop playsinline preload="metadata"></video>
           <button class="play-btn">▶ Play</button>
           <span class="duration-badge">0:45</span>
           <span class="mute-indicator">🔊</span>
         </div>
-        <!-- <h4>Brand: LUMINA</h4> -->
-        <div class="meta"> <span class="views">1.8M views</span></div>
+        <h4>Brand: LUMINA</h4>
+        <div class="meta">Branding <span class="views">1.8M views</span></div>
       </div>
 
       <!-- Card 3 -->
@@ -1100,7 +1088,7 @@
         <div class="card-index">3 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
-          <video muted playsinline preload="metadata"></video>
+          <video autoplay muted loop playsinline preload="metadata"></video>
           <button class="play-btn">▶ Play</button>
           <span class="duration-badge">0:28</span>
           <span class="mute-indicator">🔊</span>
@@ -1109,40 +1097,40 @@
         <div class="meta">Content <span class="views">3.1M views</span></div>
       </div>
 
-      <!-- Card 4 
-      <div class="stack-card" data-video="" data-title="Meta Ads" data-meta="Performance · 5.6M" data-duration="0:38">
+      <!-- Card 4 -->
+      <div class="stack-card" data-video="scroll4.mp4" data-title="Meta Ads" data-meta="Performance · 5.6M" data-duration="0:38">
         <div class="card-index">4 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
-          <video muted playsinline preload="metadata"></video>
+          <video autoplay muted loop playsinline preload="metadata"></video>
           <button class="play-btn">▶ Play</button>
           <span class="duration-badge">0:38</span>
           <span class="mute-indicator">🔊</span>
         </div>
         <h4>Meta Ads</h4>
         <div class="meta">Performance <span class="views">5.6M views</span></div>
-      </div>-->
+      </div>
 
-      <!-- Card 5 
-      <div class="stack-card" data-video="" data-title="UGC Campaign" data-meta="Influencer · 4.2M" data-duration="0:52">
+      <!-- Card 5 -->
+      <div class="stack-card" data-video="scroll5.mp4" data-title="UGC Campaign" data-meta="Influencer · 4.2M" data-duration="0:52">
         <div class="card-index">5 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
-          <video muted playsinline preload="metadata"></video>
+          <video autoplay muted loop playsinline preload="metadata"></video>
           <button class="play-btn">▶ Play</button>
           <span class="duration-badge">0:52</span>
           <span class="mute-indicator">🔊</span>
         </div>
         <h4>UGC Campaign</h4>
         <div class="meta">Influencer <span class="views">4.2M views</span></div>
-      </div>-->
+      </div>
 
-      <!-- Card 6 
-      <div class="stack-card" data-video="" data-title="Brand Launch" data-meta="Branding · 1.2M" data-duration="0:41">
+      <!-- Card 6 -->
+      <div class="stack-card" data-video="scroll6.mp4" data-title="Brand Launch" data-meta="Branding · 1.2M" data-duration="0:41">
         <div class="card-index">6 / 6</div>
         <div class="vid-placeholder">
           <div class="loading-spinner"></div>
-          <video muted playsinline preload="metadata"></video>
+          <video autoplay muted loop playsinline preload="metadata"></video>
           <button class="play-btn">▶ Play</button>
           <span class="duration-badge">0:41</span>
           <span class="mute-indicator">🔊</span>
@@ -1150,7 +1138,7 @@
         <h4>Brand Launch</h4>
         <div class="meta">Branding <span class="views">1.2M views</span></div>
       </div>
-    </div>-->
+    </div>
 
     <!-- Controls -->
     <div class="carousel-controls">
@@ -1170,7 +1158,7 @@
   </div>
 
   <!-- SERVICES -->
-  <section class="services">
+  <section class="services" id="services">
     <h2 class="section-heading">WE DON'T JUST <br><span class="light">CREATE CONTENT. WE CREATE MOMENTUM.</span></h2>
     <div class="service-row"><span class="s-num">01</span><span class="s-name">SOCIAL MEDIA</span><span class="s-desc">Engagement & community</span></div>
     <div class="service-row"><span class="s-num">02</span><span class="s-name">CONTENT & REELS</span><span class="s-desc">Short-form storytelling</span></div>
@@ -1182,7 +1170,7 @@
   </section>
 
   <!-- PROCESS -->
-  <section class="process">
+  <section class="process" id="process">
     <h2 class="section-heading">FROM IDEA <br><span class="light">TO IMPACT.</span></h2>
     <div class="process-steps">
       <div class="step"><h3>01 DISCOVER</h3><p>Understand the brand, audience and market.</p></div>
@@ -1194,7 +1182,8 @@
   </section>
 
   <!-- PILLARS -->
-  <div style="background:#f5f3ef; padding: 40px 20px;"><h2 class="section-heading" style="max-width:1200px;margin:0 auto;">CREATIVITY GETS ATTENTION.<br><span class="light">STRATEGY GETS RESULTS.</span></h2>
+  <div style="background:#f5f3ef; padding: 40px 20px;">
+    <h2 class="section-heading" style="max-width:1200px;margin:0 auto;">CREATIVITY GETS ATTENTION.<br><span class="light">STRATEGY GETS RESULTS.</span></h2>
     <div class="pillars">
       <div class="pillar"><h3>CREATIVE</h3><p>Bold ideas, unexpected visuals.</p></div>
       <div class="pillar"><h3>STRATEGY</h3><p>Data-driven, human-centric.</p></div>
@@ -1221,8 +1210,8 @@
           </span>
         </a>
       </div>
-      <!-- <div><a href="#">Work</a> ·--> <a href="pro.html">Services</a> · <!--<a href="#">About</a>--> · <a href="contact.html">Contact</a></div> 
-      <div><a href="https://www.instagram.com/creativeorbitz?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==">Instagram</a> · <a href="www.linkedin.com/in/creative-orbitz-6366b2273">LinkedIn</a> · <!--<a href="#">YouTube</a>--></div>
+      <div><a href="#work">Work</a> · <a href="#services">Services</a> · <a href="#process">Process</a> · <a href="contact.html">Contact</a></div>
+      <div><a href="https://www.instagram.com/creativeorbitz">Instagram</a> · <a href="https://www.linkedin.com/in/creative-orbitz-6366b2273">LinkedIn</a></div>
       <div><a href="mailto:hello@creativeorbitz.com">hello@creativeorbitz.com</a></div>
     </div>
     <div class="big">MAKE YOUR BRAND<br>IMPOSSIBLE TO IGNORE.</div>
@@ -1270,44 +1259,31 @@
       if (isTransitioning) return;
       isTransitioning = true;
 
-      // Remove all classes from cards
       cards.forEach(c => {
         c.classList.remove('active', 'prev', 'next', 'exit-down', 'exit-up');
       });
 
-      // Calculate indices
       const prevIndex = (currentIndex - 1 + totalCards) % totalCards;
       const nextIndex = (currentIndex + 1) % totalCards;
 
       if (direction === 'next') {
-        // Current card exits down
         cards[currentIndex].classList.add('exit-down');
-        // New active card comes from bottom
         cards[nextIndex].classList.add('active');
-        // Previous card becomes prev
         cards[prevIndex].classList.add('prev');
-        // Update current index
         currentIndex = nextIndex;
       } else if (direction === 'prev') {
-        // Current card exits up
         cards[currentIndex].classList.add('exit-up');
-        // New active card comes from top
         cards[prevIndex].classList.add('active');
-        // Next card becomes next
         cards[nextIndex].classList.add('next');
-        // Update current index
         currentIndex = prevIndex;
       } else {
-        // Initial state
         cards[0].classList.add('active');
         cards[1].classList.add('next');
         cards[totalCards - 1].classList.add('prev');
       }
 
-      // Update UI
       updateUI();
 
-      // Reset transition lock after animation
       setTimeout(() => {
         isTransitioning = false;
       }, 600);
@@ -1319,7 +1295,6 @@
       const direction = index > currentIndex ? 'next' : 'prev';
       const steps = Math.abs(index - currentIndex);
       
-      // For multiple steps, we need to animate step by step
       let stepCount = 0;
       const stepInterval = setInterval(() => {
         if (stepCount >= steps || isTransitioning) {
@@ -1332,20 +1307,14 @@
     }
 
     function updateUI() {
-      // Update counter
       counterDisplay.textContent = `${currentIndex + 1} / ${totalCards}`;
-
-      // Update dots
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentIndex);
       });
-
-      // Update buttons
       prevBtn.disabled = currentIndex === 0;
       nextBtn.disabled = currentIndex === totalCards - 1;
     }
 
-    // Event listeners
     nextBtn.addEventListener('click', () => {
       if (currentIndex < totalCards - 1) updateCarousel('next');
     });
@@ -1354,13 +1323,11 @@
       if (currentIndex > 0) updateCarousel('prev');
     });
 
-    // Keyboard support
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') nextBtn.click();
       if (e.key === 'ArrowLeft') prevBtn.click();
     });
 
-    // Initialize carousel
     updateCarousel('init');
 
     // ===== VIDEO PLAYBACK ON CARDS =====
@@ -1370,28 +1337,66 @@
       const playBtn = placeholder.querySelector('.play-btn');
       const spinner = placeholder.querySelector('.loading-spinner');
       const muteIndicator = placeholder.querySelector('.mute-indicator');
-      const videoSrc = card.dataset.video;
+      const durationBadge = placeholder.querySelector('.duration-badge');
+      let isVideoLoaded = false;
 
-      // Click on card toggles video
+      if (durationBadge && card.dataset.duration) {
+        durationBadge.textContent = card.dataset.duration;
+      }
+
+      // Auto-play the video when card becomes active
+      const observer = new MutationObserver(() => {
+        if (card.classList.contains('active') && video.src) {
+          video.play().catch(() => {});
+        }
+      });
+      observer.observe(card, { attributes: true, attributeFilter: ['class'] });
+
+      // Load video when card becomes active
+      const loadObserver = new MutationObserver(() => {
+        if (card.classList.contains('active') && !video.src) {
+          const src = card.dataset.video;
+          if (src) {
+            video.src = src;
+            video.load();
+            video.play().catch(() => {});
+          }
+        }
+      });
+      loadObserver.observe(card, { attributes: true, attributeFilter: ['class'] });
+
+      // If video already has src, play when active
+      if (card.classList.contains('active') && video.src) {
+        video.play().catch(() => {});
+      }
+
       card.addEventListener('click', (e) => {
         if (e.target.closest('.play-btn') || e.target.closest('.mute-indicator')) return;
         toggleVideo(card);
       });
 
-      // Play button click
       playBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         toggleVideo(card);
       });
 
+      if (muteIndicator) {
+        muteIndicator.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (video) {
+            video.muted = !video.muted;
+            muteIndicator.textContent = video.muted ? '🔇' : '🔊';
+          }
+        });
+      }
+
       function toggleVideo(cardElement) {
         const vid = cardElement.querySelector('video');
         const btn = cardElement.querySelector('.play-btn');
-        const spinnerEl = cardElement.querySelector('.loading-spinner');
         const src = cardElement.dataset.video;
 
         if (!src) {
-          alert('🎬 Video coming soon! This is a demo card.');
+          alert('🎬 Video file not found. Please add a video file.');
           return;
         }
 
@@ -1403,57 +1408,50 @@
         }
 
         if (!vid.src) {
+          const spinnerEl = cardElement.querySelector('.loading-spinner');
           spinnerEl.classList.add('active');
           vid.src = src;
           vid.load();
           
-          vid.addEventListener('loadeddata', () => {
+          vid.addEventListener('loadeddata', function onLoaded() {
             spinnerEl.classList.remove('active');
+            isVideoLoaded = true;
             vid.play().catch(() => {});
             btn.textContent = '⏸ Pause';
             btn.classList.add('playing');
+            vid.removeEventListener('loadeddata', onLoaded);
           });
         } else {
           vid.play().catch(() => {});
           btn.textContent = '⏸ Pause';
           btn.classList.add('playing');
         }
-
-        vid.addEventListener('volumechange', () => {
-          const muteEl = cardElement.querySelector('.mute-indicator');
-          if (muteEl) {
-            muteEl.textContent = vid.muted ? '🔇' : '🔊';
-          }
-        });
-
-        vid.addEventListener('ended', () => {
-          btn.textContent = '▶ Replay';
-          btn.classList.remove('playing');
-        });
-
-        vid.addEventListener('pause', () => {
-          if (!vid.ended) {
-            btn.textContent = '▶ Play';
-            btn.classList.remove('playing');
-          }
-        });
-
-        vid.addEventListener('play', () => {
-          btn.textContent = '⏸ Pause';
-          btn.classList.add('playing');
-        });
       }
 
-      // Mute toggle
-      if (muteIndicator) {
-        muteIndicator.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (video) {
-            video.muted = !video.muted;
-            muteIndicator.textContent = video.muted ? '🔇' : '🔊';
-          }
-        });
-      }
+      video.addEventListener('volumechange', () => {
+        if (muteIndicator) {
+          muteIndicator.textContent = video.muted ? '🔇' : '🔊';
+        }
+      });
+
+      video.addEventListener('ended', () => {
+        playBtn.textContent = '▶ Replay';
+        playBtn.classList.remove('playing');
+        // Auto-replay for continuous loop
+        video.play().catch(() => {});
+      });
+
+      video.addEventListener('pause', () => {
+        if (!video.ended) {
+          playBtn.textContent = '▶ Play';
+          playBtn.classList.remove('playing');
+        }
+      });
+
+      video.addEventListener('play', () => {
+        playBtn.textContent = '⏸ Pause';
+        playBtn.classList.add('playing');
+      });
     });
 
     // stat counters
